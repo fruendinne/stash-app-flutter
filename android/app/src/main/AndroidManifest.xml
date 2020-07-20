@@ -14,11 +14,7 @@
         android:label="stash"
         android:icon="@mipmap/ic_launcher">
 
-        <!-- TODO Change API-KEY-->
-        <meta-data android:name="com.google.android.geo.API_KEY"
-              android:value="AIzaSyA4X8E8itmrZ4hPSgvhnJHGRop62sejtvQ"/>
-
-
+    
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
