@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stash',
       theme: appTheme(),
+      debugShowCheckedModeBanner: false,
       routes: routes,
       initialRoute: "/",
     );
