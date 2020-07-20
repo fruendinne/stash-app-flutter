@@ -1,6 +1,8 @@
 import 'dart:math' as math;
 
 class SlippyMapCoordinates {
+  static const int DEFAULT_ZOOM_LEVEL = 23;
+
   final int _x;
   final int _y;
 
