@@ -26,6 +26,21 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
       coordinates: SlippyMapCoordinates.fromRadians(47.3205082, 7.918265, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
       color: Colors.pink,
     ),
+    StashModel(
+      id: 0,
+      coordinates: SlippyMapCoordinates.fromRadians(47.32056, 7.918265, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
+      color: Colors.yellow,
+    ),
+    StashModel(
+      id: 0,
+      coordinates: SlippyMapCoordinates.fromRadians(47.32056, 7.91835, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
+      color: Colors.green,
+    ),
+    StashModel(
+      id: 0,
+      coordinates: SlippyMapCoordinates.fromRadians(47.320510, 7.920450, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
+      color: Colors.blue,
+    ),
   ];
 
   @override

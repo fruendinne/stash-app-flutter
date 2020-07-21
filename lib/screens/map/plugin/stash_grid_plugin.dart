@@ -63,7 +63,7 @@ class _StashGridPainter extends CustomPainter {
       final Offset pTopNorth = Offset(pixelPos, 0.0);
       final Offset pBottomSouth = Offset(pixelPos, height);
 
-      canvas.drawLine(pTopNorth, pBottomSouth, mPaint);
+      // canvas.drawLine(pTopNorth, pBottomSouth, mPaint);
     }
 
     if (longLines.length >= 2) {
@@ -80,7 +80,7 @@ class _StashGridPainter extends CustomPainter {
         final Offset pLeft = Offset(0.0, currentY);
         final Offset pRight = Offset(width, currentY);
 
-        canvas.drawLine(pLeft, pRight, mPaint);
+        //canvas.drawLine(pLeft, pRight, mPaint);
 
         currentY += squareHeight;
       } while(currentY < height);
@@ -91,6 +91,16 @@ class _StashGridPainter extends CustomPainter {
     return 0;
   }
 
+  void _drawSquareAt(Canvas canvas, LatLng coordinates, double squareSize, Color color) {
+    final CustomPoint projected = mapState.project(coordinates, mapState.zoom);
+
+    final double startX = projected.x - mapState.getPixelBounds(mapState.zoom).topLeft.x;
+    final double startY = projected.y - mapState.getPixelBounds(mapState.zoom).topLeft.y;
+
+    mPaint.color = color.withAlpha(200);
+    canvas.drawRect(Rect.fromLTWH(startX, startY, squareSize, squareSize), mPaint);
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
     if (mapState.zoom > 15) {
@@ -99,12 +109,7 @@ class _StashGridPainter extends CustomPainter {
       options.stashes.forEach((stash) {
         LatLng coordinates = stash.coordinates.latlng;
 
-        final CustomPoint projected = mapState.project(coordinates, mapState.zoom);
-
-        final double startX = projected.x - mapState.getPixelBounds(mapState.zoom).topLeft.x;
-        final double startY = projected.y - mapState.getPixelBounds(mapState.zoom).topLeft.y;
-
-        canvas.drawRect(Rect.fromLTWH(startX, startY, squareSize, squareSize), mPaint);
+        _drawSquareAt(canvas, coordinates, squareSize, stash.color);
       });
     }
   }

@@ -46,4 +46,10 @@ class SlippyMapCoordinates {
     double n = math.pi - 2 * math.pi * y / math.pow(2, zoom);
     return 180 / math.pi * math.atan(0.5 * (math.exp(n) - math.exp(-n)));
   }
+
+  @override
+  bool operator ==(o) => o is SlippyMapCoordinates && o.x == x && o.y == y;
+
+  @override
+  int get hashCode => super.hashCode;
 }
