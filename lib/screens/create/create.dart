@@ -16,6 +16,25 @@ class CreateScreenView
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.pinkAccent);
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Container(
+            child: Column(
+              children: <Widget>[
+                Text('stash'),
+                RaisedButton(
+                  child: Text("Button!"),
+                  onPressed: state.onPressed
+                )
+              ],
+            ),
+          ),
+          Row(
+
+          )
+        ],
+      ),
+    );
   }
 }
