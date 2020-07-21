@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final ThemeData customThemeData = ThemeData(
   brightness: Brightness.light,
@@ -44,82 +45,93 @@ class CustomColors {
 
 TextTheme _buildDefaultTextTheme(TextTheme base) {
   return base.copyWith(
-      headline1: base.headline1.copyWith(
+      headline1: GoogleFonts.nunito(
+          textStyle: base.headline1.copyWith(
         fontFamily: 'Nunito',
         fontSize: 96,
         height: 1.0,
         fontWeight: FontWeight.w600,
         color: CustomColors.textOnSurfaceHighEmphasis,
-      ),
-      headline2: base.headline2.copyWith(
+      )),
+      headline2: GoogleFonts.nunito(
+          textStyle: base.headline2.copyWith(
         fontFamily: 'Nunito',
         fontSize: 66,
         height: 1.0,
         fontWeight: FontWeight.w400,
         color: CustomColors.textOnSurfaceHighEmphasis,
-      ),
-      headline3: base.headline3.copyWith(
+      )),
+      headline3: GoogleFonts.nunito(
+          textStyle: base.headline3.copyWith(
         fontFamily: 'Nunito',
         fontSize: 52,
         height: 1.0,
         fontWeight: FontWeight.w400,
         color: CustomColors.textOnSurfaceHighEmphasis,
-      ),
-      headline4: base.headline4.copyWith(
-        fontFamily: 'Nunito',
+      )),
+      headline4: GoogleFonts.nunito(
+          textStyle: base.headline4.copyWith(
         fontSize: 37,
         height: 1.0,
         fontWeight: FontWeight.w400,
         color: CustomColors.textOnSurfaceHighEmphasis,
-      ),
-      headline5: base.headline5.copyWith(
+      )),
+      headline5: GoogleFonts.nunito(
+          textStyle: base.headline5.copyWith(
         fontFamily: 'Nunito',
         fontSize: 26,
         height: 1.0,
         fontWeight: FontWeight.w400,
         color: CustomColors.textOnSurfaceHighEmphasis,
-      ),
-      headline6: base.headline6.copyWith(
+      )),
+      headline6: GoogleFonts.nunito(
+          textStyle: base.headline6.copyWith(
         fontFamily: 'Nunito',
         fontSize: 22,
         height: 1.0,
         fontWeight: FontWeight.w400,
         color: CustomColors.textOnSurfaceHighEmphasis,
-      ),
-      caption: base.caption.copyWith(
+      )),
+      caption: GoogleFonts.nunito(
+          textStyle: base.caption.copyWith(
         fontFamily: 'Nunito',
         fontSize: 14,
         letterSpacing: 0.4,
         color: CustomColors.textOnSurfaceMedEmphasis,
-      ),
-      overline: base.overline.copyWith(
-          fontFamily: 'Nunito',
-          fontSize: 14,
-          color: CustomColors.textOnSurfaceMedEmphasis),
-      bodyText1: base.bodyText1.copyWith(
-          fontFamily: 'Nunito',
-          fontSize: 16,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.5,
-          height: 1.75,
-          color: CustomColors.textOnSurfaceHighEmphasis),
-      bodyText2: base.bodyText2.copyWith(
-          fontFamily: 'Nunito',
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.5,
-          height: 1.75,
-          color: CustomColors.textOnSurfaceHighEmphasis),
-      button: base.button.copyWith(
-          fontFamily: 'Nunito',
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.25,
-          color: CustomColors.textOnPrimaryHighEmphasis),
-      subtitle1: base.subtitle1.copyWith(
-          fontFamily: 'Nunito',
-          fontSize: 17,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.5,
-          color: CustomColors.textOnSurfaceHighEmphasis));
+      )),
+      overline: GoogleFonts.nunito(
+          textStyle: base.overline.copyWith(
+              fontFamily: 'Nunito',
+              fontSize: 14,
+              color: CustomColors.textOnSurfaceMedEmphasis)),
+      bodyText1: GoogleFonts.nunito(
+          textStyle: base.bodyText1.copyWith(
+              fontFamily: 'Nunito',
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              letterSpacing: 0.5,
+              height: 1.75,
+              color: CustomColors.textOnSurfaceHighEmphasis)),
+      bodyText2: GoogleFonts.nunito(
+          textStyle: base.bodyText2.copyWith(
+              fontFamily: 'Nunito',
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              letterSpacing: 0.5,
+              height: 1.75,
+              color: CustomColors.textOnSurfaceHighEmphasis)),
+      button: GoogleFonts.nunito(
+          textStyle: base.button.copyWith(
+              fontFamily: 'Nunito',
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.25,
+              color: CustomColors.textOnPrimaryHighEmphasis)),
+      subtitle1: GoogleFonts.nunito(
+          textStyle: base.subtitle1.copyWith(
+              fontFamily: 'Nunito',
+              fontSize: 17,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.5,
+              color: CustomColors.textOnSurfaceHighEmphasis)));
 }
