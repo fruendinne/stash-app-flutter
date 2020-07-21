@@ -36,7 +36,9 @@ class StashPanelCollapsedHeader extends StatelessWidget {
               Expanded(
                   child: Center(
                       child: Text(text,
-                        style: Theme.of(context).textTheme.button,
+                        style: Theme.of(context).textTheme.subtitle1.copyWith(
+                          fontSize: 20.0
+                        ),
                       )
                   )
               ),

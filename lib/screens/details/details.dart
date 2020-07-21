@@ -51,36 +51,38 @@ class DetailsScreenView
             ],
           ),
         ),
-        Container(
-            color: CustomColors.surface100,
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 16, 8, 32),
-                  child: Text(state.stash.body),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Spacer(flex: 2),
-                    IconButton(
-                      icon: state.thumbUpIcon,
-                      onPressed: () {
-                        state.thumbsUpCallback();
-                      },
-                    ),
-                    Spacer(flex: 1),
-                    IconButton(
-                      icon: state.thumbDownIcon,
-                      onPressed: () {
-                        state.thumbsDownCallback();
-                      },
-                    ),
-                    Spacer(flex: 2),
-                  ],
-                ),
-              ],
-            )),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Align(
+              //alignment: Alignment.topLeft,
+              child: Text(state.stash.body, style: Theme.of(context).textTheme.subtitle1,)
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Spacer(flex: 2),
+              IconButton(
+                icon: state.thumbUpIcon,
+                onPressed: () {
+                  state.thumbsUpCallback();
+                },
+              ),
+              Spacer(flex: 1),
+              IconButton(
+                icon: state.thumbDownIcon,
+                onPressed: () {
+                  state.thumbsDownCallback();
+                },
+              ),
+              Spacer(flex: 2),
+            ],
+          ),
+        ),
       ],
     );
   }
