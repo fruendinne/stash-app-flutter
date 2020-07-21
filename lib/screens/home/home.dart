@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
+import 'package:stash/screens/create/create.dart';
+import 'package:stash/screens/home/components/stash_panel_collapsed_header.dart';
 import 'package:stash/screens/home/home_controller.dart';
 import 'package:stash/screens/map/map.dart';
 
@@ -25,20 +27,33 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
   double _panelHeightOpen;
 
   Widget _buildPanel(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-    );
+    if (state.currentStash != null) {
+      return Container();
+    } else {
+      return CreateScreen();
+    }
   }
 
   Widget _buildCollapsed(BuildContext context) {
-    return StashPanelCollapsedHeader(
-      text: "drop a stash",
-      appendLeft: Icon(Icons.flag),
-      appendRight: Icon(Icons.add),
-      backgroundColor: Colors.grey[300],
-      borderRadius: _panelRadius,
-      onTap: state.onPanelTap,
-    );
+    if (state.currentStash != null) {
+      return StashPanelCollapsedHeader(
+        text: "open stash",
+        appendLeft: Icon(Icons.flag),
+        appendRight: Icon(Icons.add),
+        backgroundColor: state.currentStash.color,
+        borderRadius: _panelRadius,
+        onTap: state.onPanelTap,
+      );
+    } else {
+      return StashPanelCollapsedHeader(
+        text: "drop a stash",
+        appendLeft: Icon(Icons.flag),
+        appendRight: Icon(Icons.add),
+        backgroundColor: Colors.grey[300],
+        borderRadius: _panelRadius,
+        onTap: state.onPanelTap,
+      );
+    }
   }
 
   @override
@@ -58,58 +73,12 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
             borderRadius: _panelRadius,
             margin: const EdgeInsets.symmetric(horizontal: 8.0),
           ),
+          FlatButton(
+            child: Text("2"),
+            onPressed: state.onMapTap,
+          ),
         ],
       )
-    );
-  }
-}
-
-
-class StashPanelCollapsedHeader extends StatelessWidget {
-  final Color backgroundColor;
-  final String text;
-  final BorderRadiusGeometry borderRadius;
-
-  final Widget appendLeft;
-  final Widget appendRight;
-
-  final Function onTap;
-
-  StashPanelCollapsedHeader({
-    this.backgroundColor = Colors.transparent,
-    this.text = "",
-    this.borderRadius = BorderRadius.zero,
-    this.appendLeft,
-    this.appendRight,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () { if (onTap != null) onTap(); },
-      child: Container(
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: borderRadius,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: <Widget>[
-              if (appendLeft != null) appendLeft,
-              Expanded(
-                  child: Center(
-                      child: Text(text,
-                        style: Theme.of(context).textTheme.button,
-                      )
-                  )
-              ),
-              if (appendRight != null) appendRight,
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
