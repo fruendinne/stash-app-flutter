@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
 import 'package:stash/models/stash_model.dart';
+import 'package:stash/screens/components/logo.dart';
 import 'package:stash/screens/details/details_controller.dart';
 import 'package:stash/themes/style.dart';
 
@@ -34,27 +35,36 @@ class DetailsScreenView
           ),
           child: Column(
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text("Stash",
-                      style: TextStyle(fontSize: 50, color: textColor)),
-                  Spacer(),
-                  Row(
-                    children: <Widget>[
-                      Text(state.stash.viewCount.toString(),
-                          style: TextStyle(fontSize: 24, color: textColor)),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Text("×",
+              Container(
+                height: 16.0,
+                child: Center(
+                  child: Icon(Icons.remove, color: CustomColors.textOnPrimaryHighEmphasis),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                child: Row(
+                  children: <Widget>[
+                    Logo(),
+                    Spacer(),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(state.stash.viewCount.toString(),
                             style: TextStyle(fontSize: 24, color: textColor)),
-                      ),
-                      Icon(
-                        MdiIcons.glasses,
-                        color: textColor,
-                      )
-                    ],
-                  )
-                ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          child: Text("×",
+                              style: TextStyle(fontSize: 24, color: textColor)),
+                        ),
+                        Icon(
+                          MdiIcons.glasses,
+                          color: textColor,
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
