@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
 import 'package:stash/models/stash_model.dart';
+import 'package:stash/screens/components/logo.dart';
 import 'package:stash/screens/details/details_controller.dart';
 import 'package:stash/themes/style.dart';
 
@@ -33,8 +34,7 @@ class DetailsScreenView
                     top: 8.0, bottom: 16.0, right: 8.0, left: 8.0),
                 child: Row(
                   children: <Widget>[
-                    Text("Stash",
-                        style: TextStyle(fontSize: 50, color: textColor)),
+                    Logo(),
                     Spacer(),
                     Row(
                       children: <Widget>[
