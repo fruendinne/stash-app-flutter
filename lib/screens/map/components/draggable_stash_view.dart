@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:stash/screens/details/details.dart';
 
 class DraggableStashView extends StatefulWidget {
   @override
@@ -30,11 +31,7 @@ class _DraggableStashViewState extends State<DraggableStashView> {
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               color: Color.fromRGBO(35, 35, 35, 1),
             ),
-            child: Column(
-              children: <Widget>[
-                Text("Drag to open", style: TextStyle(color: Colors.white))
-              ],
-            ),
+            child: DetailsScreen(),
           ),
         );
       },
