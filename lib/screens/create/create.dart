@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:stash/components/lustigi_radio_farbe.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
 import 'package:stash/screens/create/create_controller.dart';
 
@@ -16,6 +17,64 @@ class CreateScreenView
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.pinkAccent);
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Text(
+                    "Stash"
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                  ),
+                ],
+              ),
+              MaterialButton(
+                child: Text("+ ADD MEDIA"),
+                onPressed: state.onPressed,
+              )
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Text(
+                "Pick ä color"
+              ),
+              CustomRadio(),
+              Text(
+                "Tell me your kinks."
+              ),
+              TextField(
+                  maxLines: 8
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: MaterialButton(
+                  child: Text(
+                    "Mach di ding",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                    ),
+                  ),
+                  minWidth: 250,
+                  height: 50,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  color: Colors.grey[900],
+                  onPressed: state.onPressed,
+
+                ),
+              )
+            ],
+          )
+        ],
+      )
+    );
   }
 }
