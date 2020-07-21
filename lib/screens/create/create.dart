@@ -22,7 +22,7 @@ class CreateScreenView
           Container(
             child: Column(
               children: <Widget>[
-                Text('stash'),
+                Text('sasha'),
                 RaisedButton(
                   child: Text("Button!"),
                   onPressed: state.onPressed
