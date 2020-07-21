@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'map.dart';
 
 class MapScreenController extends State<MapScreen> {
+  bool showStashView = false;
+
   @override
   void initState() {
     super.initState();
@@ -10,4 +12,10 @@ class MapScreenController extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) => MapScreenView(this);
+
+  void switchMode() {
+    setState(() {
+      showStashView = !showStashView;
+    });
+  }
 }

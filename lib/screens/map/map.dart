@@ -4,6 +4,7 @@ import 'package:latlong/latlong.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
 import 'package:stash/screens/create/create.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:stash/screens/map/components/draggable_stash_view.dart';
 import 'package:stash/screens/map/map_controller.dart';
 import 'package:stash/screens/map/plugin/grid_plugin.dart';
 
@@ -51,29 +52,43 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: 18.0),
+          padding: const EdgeInsets.fromLTRB(0, 40, 20, 0),
           child: Align(
-            alignment: Alignment.bottomCenter,
-            child: MaterialButton(
-                minWidth: 250,
-                height: 50,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => CreateScreen()));
-                },
-                color: Colors.grey[900],
-                child: Text(
-                  "DROP A STASH HERE",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16),
-                )),
+              alignment: Alignment.topRight,
+              child: IconButton(
+                  icon: Icon(Icons.swap_vertical_circle, size: 50),
+                  onPressed: () {
+                    state.switchMode();
+                  })),
+        ),
+        Visibility(
+          visible: !state.showStashView,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 18.0),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: MaterialButton(
+                  minWidth: 250,
+                  height: 50,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => CreateScreen()));
+                  },
+                  color: Colors.grey[900],
+                  child: Text(
+                    "DROP A STASH HERE",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16),
+                  )),
+            ),
           ),
-        )
+        ),
+        Visibility(visible: state.showStashView, child: DraggableStashView())
       ],
     );
   }
