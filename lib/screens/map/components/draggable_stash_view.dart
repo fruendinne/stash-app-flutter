@@ -35,6 +35,7 @@ class _DraggableStashViewState extends State<DraggableStashView> {
             ),
             child: DetailsScreen(
               stash: StashModel(
+                  color: Colors.lime,
                   body: "Blub",
                   imageUrl:
                       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets1.ignimgs.com%2F2020%2F04%2F02%2Fjoe-exotic-tiger-king-1585833589671.jpg%3Fwidth%3D1280&f=1&nofb=1",

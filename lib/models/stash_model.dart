@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:stash/models/slippy_map_coordinates.dart';
 
 class StashModel {
@@ -10,7 +11,7 @@ class StashModel {
   final String body;
   final String linkUrl;
   String imageUrl;
-  Color color = Colors.lime;
+  final Color color;
   int viewCount = 0;
 
   StashModel(
