@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:stash/components/panel/slide_panel_header.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
 import 'package:stash/models/stash_model.dart';
 import 'package:stash/screens/components/logo.dart';
@@ -25,53 +26,28 @@ class DetailsScreenView
 
     return Column(
       children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16.0),
-              topRight: Radius.circular(16.0),
-            ),
-            color: state.stash.color,
+        SlidePanelHeader(
+          color: state.stash.color,
+          body: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(state.stash.imageUrl)
           ),
-          child: Column(
+          topRightAppend: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Container(
-                height: 16.0,
-                child: Center(
-                  child: Icon(Icons.remove, color: CustomColors.textOnPrimaryHighEmphasis),
-                ),
+              Text(state.stash.viewCount.toString(),
+                  style: TextStyle(fontSize: 24, color: textColor)
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                child: Row(
-                  children: <Widget>[
-                    Logo(),
-                    Spacer(),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(state.stash.viewCount.toString(),
-                            style: TextStyle(fontSize: 24, color: textColor)),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                          child: Text("×",
-                              style: TextStyle(fontSize: 24, color: textColor)),
-                        ),
-                        Icon(
-                          MdiIcons.glasses,
-                          color: textColor,
-                        )
-                      ],
-                    )
-                  ],
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Text("×",
+                    style: TextStyle(fontSize: 24, color: textColor)
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.network(state.stash.imageUrl)),
-              ),
+              Icon(
+                MdiIcons.glasses,
+                color: textColor,
+              )
             ],
           ),
         ),
