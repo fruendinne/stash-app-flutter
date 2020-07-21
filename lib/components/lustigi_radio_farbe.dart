@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class CustomRadio extends StatefulWidget {
@@ -9,6 +11,8 @@ class CustomRadio extends StatefulWidget {
 
 class CustomRadioState extends State<CustomRadio> {
   List<RadioModel> sampleData = new List<RadioModel>();
+
+  Random random = Random();
 
   @override
   void initState() {
@@ -23,6 +27,9 @@ class CustomRadioState extends State<CustomRadio> {
     sampleData.add(new RadioModel(false,Color(0xFFB884CB)));
     sampleData.add(new RadioModel(false,Color(0xFFEF95CF)));
     sampleData.add(new RadioModel(false,Color(0xFFF1BDC8)));
+
+    int r = random.nextInt(sampleData.length);
+    sampleData[r].isSelected = true;
   }
 
   @override
