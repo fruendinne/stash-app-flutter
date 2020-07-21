@@ -55,8 +55,9 @@ class DetailsScreenView
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                child: Image.network(state.stash.imageUrl),
-                // child: Container(height: 300, color: Colors.red),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.network(state.stash.imageUrl)),
               ),
             ],
           ),
