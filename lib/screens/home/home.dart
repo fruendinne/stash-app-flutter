@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:latlong/latlong.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
+import 'package:stash/screens/create/create.dart';
 import 'package:stash/screens/home/home_controller.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:stash/screens/home/plugin/grid_plugin.dart';
@@ -49,6 +50,27 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
             ),
           ],
         ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 36.0),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: MaterialButton(
+                minWidth: 250,
+                height: 50,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => CreateScreen()));
+                },
+                color: Colors.blue,
+                child: Text(
+                  "Drop Stash!",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                )),
+          ),
+        )
       ],
     );
   }
