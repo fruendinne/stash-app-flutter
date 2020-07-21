@@ -25,6 +25,11 @@ dependencies:
     sdk: flutter
   flutter_map: any
   latlong: ^0.6.1
+  sliding_up_panel: ^1.0.2
+  material_design_icons_flutter: 4.0.5345
+  google_fonts: ^1.1.0
+
+
 
 
 

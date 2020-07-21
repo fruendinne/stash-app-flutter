@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:stash/models/slippy_map_coordinates.dart';
 
 class StashModel {
@@ -7,13 +10,16 @@ class StashModel {
 
   final String body;
   final String linkUrl;
-  final String imageUrl;
+  String imageUrl;
+  final Color color;
+  int viewCount = 0;
 
-  StashModel({
-    this.id,
-    this.coordinates,
-    this.body,
-    this.linkUrl,
-    this.imageUrl,
-  });
+  StashModel(
+      {this.id,
+      this.coordinates,
+      this.body,
+      this.linkUrl,
+      this.imageUrl,
+      this.color,
+      this.viewCount});
 }
