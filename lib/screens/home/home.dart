@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
+import 'package:stash/screens/create/create.dart';
+import 'package:stash/screens/details/details.dart';
+import 'package:stash/screens/home/components/stash_panel_collapsed_header.dart';
 import 'package:stash/screens/home/home_controller.dart';
+import 'package:stash/screens/map/map.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -14,25 +19,69 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
   HomeScreenView(HomeScreenController state) : super(state);
 
+  BorderRadiusGeometry _panelRadius = BorderRadius.only(
+    topLeft: Radius.circular(16.0),
+    topRight: Radius.circular(16.0),
+  );
+
+  double _panelHeightClosed = 56.0;
+  double _panelHeightOpen;
+
+  Widget _buildPanel(BuildContext context) {
+    if (state.currentStash != null) {
+      return DetailsScreen(
+        stash: state.currentStash,
+      );
+    } else {
+      return CreateScreen();
+    }
+  }
+
+  Widget _buildCollapsed(BuildContext context) {
+    if (state.currentStash != null) {
+      return StashPanelCollapsedHeader(
+        text: "open stash",
+        appendLeft: Icon(Icons.flag),
+        appendRight: Icon(Icons.add),
+        backgroundColor: state.currentStash.color,
+        borderRadius: _panelRadius,
+        onTap: state.onPanelTap,
+      );
+    } else {
+      return StashPanelCollapsedHeader(
+        text: "drop a stash",
+        appendLeft: Icon(Icons.flag),
+        appendRight: Icon(Icons.add),
+        backgroundColor: Colors.grey[300],
+        borderRadius: _panelRadius,
+        onTap: state.onPanelTap,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    _panelHeightOpen = MediaQuery.of(context).size.height * .90;
+
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            title: Text('Explore'),
+      body: Stack(
+        children: <Widget>[
+          MapScreen(),
+          SlidingUpPanel(
+            controller: state.panelController,
+            panel: _buildPanel(context),
+            collapsed: _buildCollapsed(context),
+            minHeight: _panelHeightClosed,
+            maxHeight: _panelHeightOpen,
+            borderRadius: _panelRadius,
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(MdiIcons.podiumSilver),
-            title: Text('Leaderboard'),
+          FlatButton(
+            child: Text("2"),
+            onPressed: state.onMapTap,
           ),
         ],
-        currentIndex: state.selectedIndex,
-        selectedItemColor: Theme.of(context).primaryColor,
-        onTap: state.onItemTapped,
-      ),
-      body: state.getView(),
+      )
     );
   }
 }

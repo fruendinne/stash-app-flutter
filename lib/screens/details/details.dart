@@ -26,17 +26,29 @@ class DetailsScreenView
     return Column(
       children: <Widget>[
         Container(
-          color: Color(0xFF87DD88),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16.0),
+              topRight: Radius.circular(16.0),
+            ),
+            color: state.stash.color,
+          ),
           child: Column(
             children: <Widget>[
+              Container(
+                height: 16.0,
+                child: Center(
+                  child: Icon(Icons.remove, color: CustomColors.textOnPrimaryHighEmphasis),
+                ),
+              ),
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 8.0, bottom: 16.0, right: 8.0, left: 8.0),
+                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                 child: Row(
                   children: <Widget>[
                     Logo(),
                     Spacer(),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(state.stash.viewCount.toString(),
                             style: TextStyle(fontSize: 24, color: textColor)),
