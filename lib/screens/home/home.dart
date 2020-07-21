@@ -18,32 +18,36 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return FlutterMap(
-      options: new MapOptions(
-        center: new LatLng(47.5, 7.6),
-        zoom: 13.0,
-        plugins: [
-          MapPluginLatLonGrid(),
-        ],
-      ),
-      layers: [
-        new TileLayerOptions(
-          urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-          subdomains: ['a', 'b', 'c'],
-        ),
-        MapPluginLatLonGridOptions(
-          lineColor: Colors.black,
-          textColor: Colors.white,
-          lineWidth: 0.5,
-          textBackgroundColor: Colors.black,
-          showCardinalDirections: true,
-          showCardinalDirectionsAsPrefix: false,
-          textSize: 12.0,
-          showLabels: false,
-          rotateLonLabels: true,
-          placeLabelsOnLines: true,
-          offsetLonTextBottom: 20.0,
-          offsetLatTextLeft: 20.0,
+    return Stack(
+      children: <Widget>[
+        FlutterMap(
+          options: new MapOptions(
+            center: new LatLng(47.5, 7.6),
+            zoom: 13.0,
+            plugins: [
+              MapPluginLatLonGrid(),
+            ],
+          ),
+          layers: [
+            new TileLayerOptions(
+              urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              subdomains: ['a', 'b', 'c'],
+            ),
+            MapPluginLatLonGridOptions(
+              lineColor: Colors.grey[600],
+              textColor: Colors.transparent,
+              lineWidth: 1,
+              textBackgroundColor: Colors.transparent,
+              showCardinalDirections: false,
+              showCardinalDirectionsAsPrefix: false,
+              textSize: 12.0,
+              showLabels: true,
+              rotateLonLabels: true,
+              placeLabelsOnLines: true,
+              offsetLonTextBottom: 20.0,
+              offsetLatTextLeft: 20.0,
+            ),
+          ],
         ),
       ],
     );

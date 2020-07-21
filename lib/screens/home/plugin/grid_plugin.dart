@@ -1,5 +1,3 @@
-library lat_lon_grid_plugin;
-
 import 'dart:math';
 
 import 'package:flutter/material.dart';
