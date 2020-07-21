@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   flutter_map: any
   latlong: ^0.6.1
+  material_design_icons_flutter: 4.0.5345
+
 
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
 import 'package:stash/screens/home/home_controller.dart';
 
@@ -23,7 +24,7 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
             title: Text('Explore'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.sentiment_satisfied),
+            icon: Icon(MdiIcons.podiumSilver),
             title: Text('Leaderboard'),
           ),
         ],
