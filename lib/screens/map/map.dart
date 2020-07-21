@@ -7,6 +7,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:stash/screens/map/components/draggable_stash_view.dart';
 import 'package:stash/screens/map/map_controller.dart';
 import 'package:stash/screens/map/plugin/grid_plugin.dart';
+import 'package:stash/themes/style.dart';
 
 class MapScreen extends StatefulWidget {
   MapScreen({Key key}) : super(key: key);
@@ -77,13 +78,10 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (BuildContext context) => CreateScreen()));
                   },
-                  color: Colors.grey[900],
+                  color: CustomColors.primary900,
                   child: Text(
                     "DROP A STASH HERE",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16),
+                    style: Theme.of(context).textTheme.button,
                   )),
             ),
           ),

@@ -4,6 +4,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:stash/components/widget_view/widget_view.dart';
 import 'package:stash/models/stash_model.dart';
 import 'package:stash/screens/details/details_controller.dart';
+import 'package:stash/themes/style.dart';
 
 class DetailsScreen extends StatefulWidget {
   final StashModel stash;
@@ -63,7 +64,7 @@ class DetailsScreenView
           ),
         ),
         Container(
-            color: Colors.white,
+            color: CustomColors.surface100,
             child: Column(
               children: <Widget>[
                 Padding(

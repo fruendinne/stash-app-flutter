@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stash/models/stash_model.dart';
 import 'package:stash/screens/details/details.dart';
+import 'package:stash/themes/style.dart';
 
 class DraggableStashView extends StatefulWidget {
   @override
@@ -30,7 +31,7 @@ class _DraggableStashViewState extends State<DraggableStashView> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-              color: Color.fromRGBO(35, 35, 35, 1),
+              color: CustomColors.surface200,
             ),
             child: DetailsScreen(
               stash: StashModel(
