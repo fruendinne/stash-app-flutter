@@ -15,6 +15,10 @@ class HomeScreenController extends State<HomeScreen> {
     id: 0,
     coordinates: SlippyMapCoordinates.fromRadians(47.3205082, 7.918265, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
     color: Colors.yellow[600],
+    body: "Hello",
+    linkUrl: "",
+    viewCount: 1,
+    imageUrl: "https://images.unsplash.com/photo-1528825950832-560a4a11473a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80"
   ) : null;
 
   @override

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
 import 'package:stash/screens/create/create.dart';
+import 'package:stash/screens/details/details.dart';
 import 'package:stash/screens/home/components/stash_panel_collapsed_header.dart';
 import 'package:stash/screens/home/home_controller.dart';
 import 'package:stash/screens/map/map.dart';
@@ -28,7 +29,9 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
 
   Widget _buildPanel(BuildContext context) {
     if (state.currentStash != null) {
-      return Container();
+      return DetailsScreen(
+        stash: state.currentStash,
+      );
     } else {
       return CreateScreen();
     }
