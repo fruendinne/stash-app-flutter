@@ -29,7 +29,7 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
           ),
         ],
         currentIndex: state.selectedIndex,
-        selectedItemColor: Colors.grey[900],
+        selectedItemColor: Theme.of(context).primaryColor,
         onTap: state.onItemTapped,
       ),
       body: state.getView(),

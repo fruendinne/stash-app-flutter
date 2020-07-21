@@ -9,6 +9,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:stash/screens/map/components/draggable_stash_view.dart';
 import 'package:stash/screens/map/map_controller.dart';
 import 'package:stash/screens/map/plugin/stash_grid_plugin.dart';
+import 'package:stash/themes/style.dart';
 
 class MapScreen extends StatefulWidget {
   MapScreen({Key key}) : super(key: key);
@@ -23,22 +24,26 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
   final List<StashModel> stashes = <StashModel>[
     StashModel(
       id: 0,
-      coordinates: SlippyMapCoordinates.fromRadians(47.3205082, 7.918265, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
+      coordinates: SlippyMapCoordinates.fromRadians(
+          47.3205082, 7.918265, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
       color: Colors.pink,
     ),
     StashModel(
       id: 0,
-      coordinates: SlippyMapCoordinates.fromRadians(47.32056, 7.918265, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
+      coordinates: SlippyMapCoordinates.fromRadians(
+          47.32056, 7.918265, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
       color: Colors.yellow,
     ),
     StashModel(
       id: 0,
-      coordinates: SlippyMapCoordinates.fromRadians(47.32056, 7.91835, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
+      coordinates: SlippyMapCoordinates.fromRadians(
+          47.32056, 7.91835, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
       color: Colors.green,
     ),
     StashModel(
       id: 0,
-      coordinates: SlippyMapCoordinates.fromRadians(47.320510, 7.920450, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
+      coordinates: SlippyMapCoordinates.fromRadians(
+          47.320510, 7.920450, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
       color: Colors.blue,
     ),
   ];
@@ -49,7 +54,7 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
       children: <Widget>[
         FlutterMap(
           options: new MapOptions(
-            center: new LatLng(47.3205082,7.918265),
+            center: new LatLng(47.3205082, 7.918265),
             zoom: 13.0,
             plugins: [
               MapPluginStashGrid(),
@@ -91,13 +96,10 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (BuildContext context) => CreateScreen()));
                   },
-                  color: Colors.grey[900],
+                  color: CustomColors.primary900,
                   child: Text(
                     "DROP A STASH HERE",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16),
+                    style: Theme.of(context).textTheme.button,
                   )),
             ),
           ),

@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:stash/models/stash_model.dart';
+import 'package:stash/screens/details/details.dart';
+import 'package:stash/themes/style.dart';
 
 class DraggableStashView extends StatefulWidget {
   @override
@@ -28,12 +31,15 @@ class _DraggableStashViewState extends State<DraggableStashView> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-              color: Color.fromRGBO(35, 35, 35, 1),
+              color: CustomColors.surface200,
             ),
-            child: Column(
-              children: <Widget>[
-                Text("Drag to open", style: TextStyle(color: Colors.white))
-              ],
+            child: DetailsScreen(
+              stash: StashModel(
+                  color: Colors.lime,
+                  body: "Blub",
+                  imageUrl:
+                      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fassets1.ignimgs.com%2F2020%2F04%2F02%2Fjoe-exotic-tiger-king-1585833589671.jpg%3Fwidth%3D1280&f=1&nofb=1",
+                  viewCount: 42),
             ),
           ),
         );
