@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:latlong/latlong.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
+import 'package:stash/models/slippy_map_coordinates.dart';
+import 'package:stash/models/stash_model.dart';
 import 'package:stash/screens/create/create.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:stash/screens/map/components/draggable_stash_view.dart';
 import 'package:stash/screens/map/map_controller.dart';
-import 'package:stash/screens/map/plugin/grid_plugin.dart';
+import 'package:stash/screens/map/plugin/stash_grid_plugin.dart';
 
 class MapScreen extends StatefulWidget {
   MapScreen({Key key}) : super(key: key);
@@ -18,16 +20,24 @@ class MapScreen extends StatefulWidget {
 class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
   MapScreenView(MapScreenController state) : super(state);
 
+  final List<StashModel> stashes = <StashModel>[
+    StashModel(
+      id: 0,
+      coordinates: SlippyMapCoordinates.fromRadians(47.3205082, 7.918265, SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL),
+      color: Colors.pink,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         FlutterMap(
           options: new MapOptions(
-            center: new LatLng(47.5, 7.6),
+            center: new LatLng(47.3205082,7.918265),
             zoom: 13.0,
             plugins: [
-              MapPluginLatLonGrid(),
+              MapPluginStashGrid(),
             ],
           ),
           layers: [
@@ -35,19 +45,8 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
               urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
               subdomains: ['a', 'b', 'c'],
             ),
-            MapPluginLatLonGridOptions(
-              lineColor: Colors.grey[600],
-              textColor: Colors.transparent,
-              lineWidth: 1,
-              textBackgroundColor: Colors.transparent,
-              showCardinalDirections: false,
-              showCardinalDirectionsAsPrefix: false,
-              textSize: 12.0,
-              showLabels: true,
-              rotateLonLabels: true,
-              placeLabelsOnLines: true,
-              offsetLonTextBottom: 20.0,
-              offsetLatTextLeft: 20.0,
+            MapPluginStashGridOptions(
+              stashes: stashes,
             ),
           ],
         ),

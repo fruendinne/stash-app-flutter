@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:stash/models/slippy_map_coordinates.dart';
 
 class StashModel {
@@ -9,11 +10,14 @@ class StashModel {
   final String linkUrl;
   final String imageUrl;
 
+  final Color color;
+
   StashModel({
     this.id,
     this.coordinates,
     this.body,
     this.linkUrl,
     this.imageUrl,
+    this.color,
   });
 }

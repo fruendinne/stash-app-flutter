@@ -1,6 +1,10 @@
 import 'dart:math' as math;
 
+import 'package:latlong/latlong.dart';
+
 class SlippyMapCoordinates {
+  static const int DEFAULT_ZOOM_LEVEL = 22;
+
   final int _x;
   final int _y;
 
@@ -12,12 +16,14 @@ class SlippyMapCoordinates {
   double get latitude => _tileToLat(_y, _zoom);
   double get longitude => _tileToLong(_x, _zoom);
 
+  LatLng get latlng => LatLng(latitude, longitude);
+
   SlippyMapCoordinates(this._x, this._y, this._zoom);
 
   factory SlippyMapCoordinates.fromRadians(double latitude, double longitude, int zoom) {
     return new SlippyMapCoordinates(
-        _latToTile(latitude, zoom),
         _longToTile(longitude, zoom),
+        _latToTile(latitude, zoom),
         zoom,
     );
   }
