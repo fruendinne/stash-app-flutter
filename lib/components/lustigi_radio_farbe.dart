@@ -1,11 +1,11 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class CustomRadio extends StatefulWidget {
+  final List<Color> colorChoices;
   final Function onChange;
+  final int randomia;
 
-  const CustomRadio({Key key, this.onChange}) : super(key: key);
+  const CustomRadio({Key key, this.onChange, this.colorChoices, this.randomia = 0}) : super(key: key);
 
   @override
   createState() {
@@ -14,28 +14,23 @@ class CustomRadio extends StatefulWidget {
 }
 
 class CustomRadioState extends State<CustomRadio> {
-  List<RadioModel> sampleData = new List<RadioModel>();
-
-  Random random = Random();
-
+  int selectedColor = 0;
   @override
   void initState() {
     super.initState();
+    selectedColor = widget.randomia;
 
-    sampleData.add(new RadioModel(false,Color(0xFFE5554F)));
-    sampleData.add(new RadioModel(false,Color(0xFFFF9E1B)));
-    sampleData.add(new RadioModel(false,Color(0xFFFFD700)));
-    sampleData.add(new RadioModel(false,Color(0xFF79BE70)));
-    sampleData.add(new RadioModel(false,Color(0xFF279989)));
-    sampleData.add(new RadioModel(false,Color(0xFF00A7B5)));
-    sampleData.add(new RadioModel(false,Color(0xFFB884CB)));
-    sampleData.add(new RadioModel(false,Color(0xFFEF95CF)));
-    sampleData.add(new RadioModel(false,Color(0xFFF1BDC8)));
-
-    int r = random.nextInt(sampleData.length);
-    sampleData[r].isSelected = true;
 
     //widget.onChange(sampleData[r].color);
+  }
+
+  bool isSelecta(Color color){
+    int colorIndex = widget.colorChoices.indexOf(color);
+    if(colorIndex>=0){
+      return selectedColor == colorIndex;
+    }else{
+      return false;
+    }
   }
 
   @override
@@ -45,17 +40,18 @@ class CustomRadioState extends State<CustomRadio> {
 
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: sampleData.length,
+        itemCount: widget.colorChoices.length,
         itemBuilder: (BuildContext context, int index) {
+        Color color = widget.colorChoices[index];
 
-          return new RadioItem(
-              sampleData[index],
+        return new RadioItem(
+              color,
+              isSelecta(color),
               (){
                 setState(() {
-                  sampleData.forEach((element) => element.isSelected = false);
-                  sampleData[index].isSelected = true;
+                  selectedColor = widget.colorChoices.indexOf(color);
                 });
-                widget.onChange(sampleData[index].color);
+                widget.onChange(color);
           }
 
           );
@@ -67,9 +63,10 @@ class CustomRadioState extends State<CustomRadio> {
 
 
 class RadioItem extends StatelessWidget {
-  final RadioModel _item;
+  final Color _item;
+  final bool isSelecta;
   final Function onTap;
-  RadioItem(this._item, this.onTap);
+  RadioItem(this._item, this.isSelecta, this.onTap);
   @override
   Widget build(BuildContext context) {
 
@@ -81,10 +78,10 @@ class RadioItem extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           child: Container(
-              height: _item.isSelected ? 40.0 : 50.0,
-              width: _item.isSelected ? 40.0 : 50.0,
+              height: isSelecta ? 40.0 : 50.0,
+              width: isSelecta ? 40.0 : 50.0,
               decoration: new BoxDecoration(
-                color: _item.color,
+                color: _item,
                 borderRadius: const BorderRadius.all(const Radius.circular(5.0)
                 ),
               ),
@@ -93,11 +90,4 @@ class RadioItem extends StatelessWidget {
       ),
     );
   }
-}
-
-class RadioModel {
-  bool isSelected;
-  final Color color;
-
-  RadioModel(this.isSelected, this.color);
 }

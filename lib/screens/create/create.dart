@@ -61,6 +61,8 @@ class CreateScreenView
               alignment: Alignment.centerLeft,
             ),
             CustomRadio(
+              colorChoices: state.colorChoices,
+              randomia: state.randomianer,
               onChange: state.onRadioChange,
             ),
             Padding(
