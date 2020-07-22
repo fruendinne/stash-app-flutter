@@ -1,7 +1,7 @@
+import 'dart:io';
 import 'dart:math';
-
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/widgets.dart';
-
 import 'create.dart';
 
 class CreateScreenController extends State<CreateScreen> {
@@ -20,6 +20,7 @@ class CreateScreenController extends State<CreateScreen> {
 
   int randomianer;
   Color color;
+  File image;
 
   @override
   void initState() {
@@ -32,6 +33,16 @@ class CreateScreenController extends State<CreateScreen> {
   }
   void onPressed(){
     debugPrint("Dickkkkk");
+  }
+
+  Future getImage() async {
+    final picker = ImagePicker();
+
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      image = File(pickedFile.path);
+    });
   }
 
   void onRadioChange(Color newColor){
