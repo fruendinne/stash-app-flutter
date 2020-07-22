@@ -73,9 +73,12 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
         Positioned(
           top: 24.0,
           left: 16.0,
-          child: Logo(
-            color: CustomColors.textOnSurfaceHighEmphasis,
-            dropShadow: true,
+          child: GestureDetector(
+            onTap: state.onMapTap,
+            child: Logo(
+              color: CustomColors.textOnSurfaceHighEmphasis,
+              dropShadow: true,
+            ),
           ),
         ),
         SlidingUpPanel(
@@ -86,10 +89,6 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
           maxHeight: _panelHeightOpen,
           borderRadius: _panelRadius,
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        ),
-        FlatButton(
-          child: Text("2"),
-          onPressed: state.onMapTap,
         ),
       ],
     ));
