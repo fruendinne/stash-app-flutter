@@ -7,6 +7,7 @@ import 'package:stash/models/stash_model.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:stash/screens/map/map_controller.dart';
 import 'package:stash/screens/map/plugin/stash_grid_plugin.dart';
+import 'package:stash/services/location.dart';
 import 'package:user_location/user_location.dart';
 
 class MapScreen extends StatefulWidget {
@@ -48,6 +49,18 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    UserLocationOptions userLocationOptions = UserLocationOptions(
+      context: context,
+      mapController: state.mapController,
+      markers: state.markers,
+      updateMapLocationOnPositionChange: false,
+      showHeading: true,
+      showMoveToCurrentLocationFloatingActionButton: true,
+      defaultZoom: 18,
+      fabBottom: 80,
+      onTapFAB: () {},
+      onLocationUpdate: state.onLocationUpdate,
+    );
     return Stack(
       children: <Widget>[
         FlutterMap(
@@ -69,7 +82,7 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
               stashes: stashes,
             ),
             MarkerLayerOptions(markers: state.markers),
-            state.userLocationOptions,
+            userLocationOptions,
           ],
         ),
       ],

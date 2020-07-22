@@ -8,26 +8,14 @@ import 'map.dart';
 
 class MapScreenController extends State<MapScreen> {
   MapController mapController = MapController();
-  UserLocationOptions userLocationOptions;
   List<Marker> markers = [];
 
   @override
   void initState() {
-    userLocationOptions = UserLocationOptions(
-      context: context,
-      mapController: mapController,
-      markers: markers,
-      updateMapLocationOnPositionChange: false,
-      showHeading: true,
-      showMoveToCurrentLocationFloatingActionButton: true,
-      defaultZoom: 18,
-      fabBottom: 80,
-      onLocationUpdate: _onLocationUpdate,
-    );
     super.initState();
   }
 
-  _onLocationUpdate(LatLng latlon) {
+  onLocationUpdate(LatLng latlon) {
     LocationService.instance.lastPosition = latlon;
     // debugPrint(LocationService.instance.lastPosition.toString());
   }
