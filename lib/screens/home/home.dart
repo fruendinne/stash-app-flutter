@@ -67,32 +67,31 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
     _panelHeightOpen = MediaQuery.of(context).size.height - 48;
 
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          MapScreen(),
-          Positioned(
-            top: 24.0,
-            left: 16.0,
-            child: Logo(
-              color: CustomColors.textOnSurfaceHighEmphasis,
-              dropShadow: true,
-            ),
+        body: Stack(
+      children: <Widget>[
+        MapScreen(),
+        Positioned(
+          top: 24.0,
+          left: 16.0,
+          child: Logo(
+            color: CustomColors.textOnSurfaceHighEmphasis,
+            dropShadow: true,
           ),
-          SlidingUpPanel(
-            controller: state.panelController,
-            panel: _buildPanel(context),
-            collapsed: _buildCollapsed(context),
-            minHeight: _panelHeightClosed,
-            maxHeight: _panelHeightOpen,
-            borderRadius: _panelRadius,
-            margin: const EdgeInsets.symmetric(horizontal: 8.0),
-          ),
-          FlatButton(
-            child: Text("2"),
-            onPressed: state.onMapTap,
-          ),
-        ],
-      )
-    );
+        ),
+        SlidingUpPanel(
+          controller: state.panelController,
+          panel: _buildPanel(context),
+          collapsed: _buildCollapsed(context),
+          minHeight: _panelHeightClosed,
+          maxHeight: _panelHeightOpen,
+          borderRadius: _panelRadius,
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        ),
+        FlatButton(
+          child: Text("2"),
+          onPressed: state.onMapTap,
+        ),
+      ],
+    ));
   }
 }

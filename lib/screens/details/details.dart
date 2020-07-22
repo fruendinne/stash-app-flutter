@@ -4,9 +4,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:stash/components/panel/slide_panel_header.dart';
 import 'package:stash/components/widget_view/widget_view.dart';
 import 'package:stash/models/stash_model.dart';
-import 'package:stash/screens/components/logo.dart';
 import 'package:stash/screens/details/details_controller.dart';
-import 'package:stash/themes/style.dart';
 
 class DetailsScreen extends StatefulWidget {
   final StashModel stash;
@@ -30,19 +28,16 @@ class DetailsScreenView
           color: state.stash.color,
           body: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(state.stash.imageUrl)
-          ),
+              child: Image.network(state.stash.imageUrl)),
           topRightAppend: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(state.stash.viewCount.toString(),
-                  style: TextStyle(fontSize: 24, color: textColor)
-              ),
+                  style: TextStyle(fontSize: 24, color: textColor)),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: Text("×",
-                    style: TextStyle(fontSize: 24, color: textColor)
-                ),
+                child:
+                    Text("×", style: TextStyle(fontSize: 24, color: textColor)),
               ),
               Icon(
                 MdiIcons.glasses,
@@ -55,9 +50,11 @@ class DetailsScreenView
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Align(
-              //alignment: Alignment.topLeft,
-              child: Text(state.stash.body, style: Theme.of(context).textTheme.subtitle1,)
-            ),
+                //alignment: Alignment.topLeft,
+                child: Text(
+              state.stash.body,
+              style: Theme.of(context).textTheme.subtitle1,
+            )),
           ),
         ),
         Padding(

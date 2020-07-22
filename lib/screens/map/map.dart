@@ -48,15 +48,6 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    state.userLocationOptions = UserLocationOptions(
-        context: context,
-        mapController: state.mapController,
-        markers: state.markers,
-        updateMapLocationOnPositionChange: false,
-        showHeading: true,
-        showMoveToCurrentLocationFloatingActionButton: true,
-        fabBottom: 80,
-        onLocationUpdate: (LatLng latlon) => {});
     return Stack(
       children: <Widget>[
         FlutterMap(
