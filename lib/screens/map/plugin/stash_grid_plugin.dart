@@ -98,7 +98,13 @@ class _StashGridPainter extends CustomPainter {
     final double startY = projected.y - mapState.getPixelBounds(mapState.zoom).topLeft.y;
 
     mPaint.color = color.withAlpha(200);
-    canvas.drawRect(Rect.fromLTWH(startX, startY, squareSize, squareSize), mPaint);
+    canvas.drawRRect(
+        RRect.fromRectAndRadius(
+            Rect.fromLTWH(startX, startY, squareSize, squareSize),
+            Radius.circular(squareSize / 6)
+        ),
+        mPaint
+    );
   }
 
   @override

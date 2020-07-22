@@ -14,37 +14,37 @@ class SlidePanelHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16.0),
-              topRight: Radius.circular(16.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16.0),
+          topRight: Radius.circular(16.0),
+        ),
+        color: color,
+      ),
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: 16.0,
+            child: Center(
+              child: Icon(Icons.remove,
+                  color: CustomColors.textOnPrimaryHighEmphasis),
+            ),
           ),
-          color: color,
-        ),
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 16.0,
-              child: Center(
-                child: Icon(Icons.remove, color: CustomColors.textOnPrimaryHighEmphasis),
-              ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, top: 12.0, right: 16.0),
+            child: Row(
+              children: <Widget>[
+                Logo(),
+                Spacer(),
+                if (topRightAppend != null) topRightAppend,
+              ],
             ),
+          ),
+          if (body != null)
             Padding(
-              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-              child: Row(
-                children: <Widget>[
-                  Logo(),
-                  Spacer(),
-                  if (topRightAppend != null) topRightAppend,
-                ],
-              ),
-            ),
-            if (body != null) Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-              child: body
-            ),
-          ],
-        ),
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16), child: body),
+        ],
+      ),
     );
   }
 }

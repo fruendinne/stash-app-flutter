@@ -7,6 +7,7 @@ import 'package:stash/models/stash_model.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:stash/screens/map/map_controller.dart';
 import 'package:stash/screens/map/plugin/stash_grid_plugin.dart';
+import 'package:user_location/user_location.dart';
 
 class MapScreen extends StatefulWidget {
   MapScreen({Key key}) : super(key: key);
@@ -50,11 +51,13 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
     return Stack(
       children: <Widget>[
         FlutterMap(
+          mapController: state.mapController,
           options: new MapOptions(
-            center: new LatLng(47.3205082,7.918265),
+            center: new LatLng(47.3205082, 7.918265),
             zoom: 17.0,
             plugins: [
               MapPluginStashGrid(),
+              UserLocationPlugin(),
             ],
           ),
           layers: [
@@ -65,6 +68,8 @@ class MapScreenView extends WidgetView<MapScreen, MapScreenController> {
             MapPluginStashGridOptions(
               stashes: stashes,
             ),
+            MarkerLayerOptions(markers: state.markers),
+            state.userLocationOptions,
           ],
         ),
       ],
