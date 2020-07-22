@@ -44,8 +44,8 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
     if (state.currentStash != null) {
       return StashPanelCollapsedHeader(
         text: "open stash",
-        appendLeft: Icon(Icons.flag),
-        appendRight: Icon(Icons.add),
+        // appendLeft: Icon(Icons.flag),
+        // appendRight: Icon(Icons.add),
         backgroundColor: state.currentStash.color,
         borderRadius: _panelRadius,
         onTap: state.onPanelTap,
@@ -53,8 +53,8 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
     } else {
       return StashPanelCollapsedHeader(
         text: "drop a stash",
-        appendLeft: Icon(Icons.flag),
-        appendRight: Icon(Icons.add),
+        // appendLeft: Icon(Icons.flag),
+        // appendRight: Icon(Icons.add),
         backgroundColor: Colors.grey[300],
         borderRadius: _panelRadius,
         onTap: state.onPanelTap,
@@ -82,13 +82,23 @@ class HomeScreenView extends WidgetView<HomeScreen, HomeScreenController> {
           ),
         ),
         SlidingUpPanel(
+          color: null,
           controller: state.panelController,
-          panel: _buildPanel(context),
-          collapsed: _buildCollapsed(context),
+          panel: Container(
+              decoration: BoxDecoration(
+                  color: CustomColors.surface100,
+                  borderRadius: BorderRadius.all(Radius.circular(16.0))),
+              margin: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+              child: _buildPanel(context)),
+          collapsed: Container(
+              decoration: BoxDecoration(
+                  color: CustomColors.surface100,
+                  borderRadius: BorderRadius.all(Radius.circular(16.0))),
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: _buildCollapsed(context)),
           minHeight: _panelHeightClosed,
           maxHeight: _panelHeightOpen,
           borderRadius: _panelRadius,
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
         ),
       ],
     ));
