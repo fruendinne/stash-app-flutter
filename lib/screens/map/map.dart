@@ -7,7 +7,6 @@ import 'package:stash/models/stash_model.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:stash/screens/map/map_controller.dart';
 import 'package:stash/screens/map/plugin/stash_grid_plugin.dart';
-import 'package:stash/services/location.dart';
 import 'package:user_location/user_location.dart';
 
 class MapScreen extends StatefulWidget {
