@@ -1,12 +1,13 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:latlong/latlong.dart';
 import 'package:stash/models/slippy_map_coordinates.dart';
 
 class LocationService {
-  Position lastPosition;
+  LatLng lastPosition;
 
   LocationService._privateConstructor();
-  LocationService _instance = LocationService._privateConstructor();
-  LocationService get instance => _instance;
+  static LocationService _instance = LocationService._privateConstructor();
+  static LocationService get instance => _instance;
 
   static Future<Position> getCurrentPosition() async {
     return await Geolocator()
@@ -21,9 +22,12 @@ class LocationService {
     return coordPos;
   }
 
-  static Future<bool> onSameSlippyMapCoordinate(
-      SlippyMapCoordinates coord) async {
-    SlippyMapCoordinates pos = await getSlippyMapCoordinates();
+  // Returns if current pos is on given slippy map coordinate
+  Future<bool> onSameSlippyMapCoordinate(SlippyMapCoordinates coord) async {
+    SlippyMapCoordinates pos = SlippyMapCoordinates.fromRadians(
+        lastPosition.latitudeInRad,
+        lastPosition.longitudeInRad,
+        SlippyMapCoordinates.DEFAULT_ZOOM_LEVEL);
     return coord == pos;
   }
 }
