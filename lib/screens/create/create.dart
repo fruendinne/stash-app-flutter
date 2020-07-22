@@ -41,6 +41,9 @@ class CreateScreenView
                   MaterialButton(
                     child: Text("+ ADD MEDIA"),
                     onPressed: state.onPressed,
+                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(50)),
+                    color: Colors.white,
+
                   )
                 ],
               ),
