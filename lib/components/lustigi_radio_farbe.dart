@@ -3,6 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class CustomRadio extends StatefulWidget {
+  final Function onChange;
+
+  const CustomRadio({Key key, this.onChange}) : super(key: key);
+
   @override
   createState() {
     return new CustomRadioState();
@@ -30,6 +34,8 @@ class CustomRadioState extends State<CustomRadio> {
 
     int r = random.nextInt(sampleData.length);
     sampleData[r].isSelected = true;
+
+    //widget.onChange(sampleData[r].color);
   }
 
   @override
@@ -49,6 +55,7 @@ class CustomRadioState extends State<CustomRadio> {
                   sampleData.forEach((element) => element.isSelected = false);
                   sampleData[index].isSelected = true;
                 });
+                widget.onChange(sampleData[index].color);
           }
 
           );
