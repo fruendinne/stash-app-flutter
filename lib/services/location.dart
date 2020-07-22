@@ -2,6 +2,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:stash/models/slippy_map_coordinates.dart';
 
 class LocationService {
+  Position lastPosition;
+
+  LocationService._privateConstructor();
+  LocationService _instance = LocationService._privateConstructor();
+  LocationService get instance => _instance;
+
   static Future<Position> getCurrentPosition() async {
     return await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
