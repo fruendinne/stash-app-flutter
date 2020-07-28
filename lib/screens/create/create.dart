@@ -20,12 +20,16 @@ class CreateScreenView
     if (state.image == null) {
       return Align(
         alignment: Alignment.centerLeft,
-        child: MaterialButton(
-          child: Text("+ ADD BILDO"),
+        child: FloatingActionButton.extended(
+          elevation: 3,
+          label: Text("ADD BILDO",
+          style: Theme.of(context).textTheme.button.copyWith(color: Colors.black)),
           onPressed: state.getImage,
-          shape:
-              RoundedRectangleBorder(borderRadius: new BorderRadius.circular(50)),
-          color: Colors.white,
+          icon: Icon(
+            Icons.add,
+            color: Colors.black,),
+
+          backgroundColor: Colors.white,
         ),
       );
     } else {
@@ -39,9 +43,25 @@ class CreateScreenView
             alignment: FractionalOffset.center),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: ,
-        ),
-      );
+
+
+          child: Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FloatingActionButton(
+                elevation: 1,
+                onPressed: state.deleteImage,
+                backgroundColor: Colors.white,
+                child: Icon(Icons.close,
+                  color: Colors.black,
+                ),
+                mini: true,
+              ),
+            ),
+          )
+      )
+    );
     }
   }
 
@@ -61,15 +81,16 @@ class CreateScreenView
         children: <Widget>[
           SlidePanelHeader(
             color: state.color,
-            topRightAppend: IconButton(
-              icon: Icon(Icons.close, color: Colors.white),
-            ),
+//            topRightAppend: IconButton(
+//              icon: Icon(Icons.close, color: Colors.white),
+//            ),
             body: _buildHeaderBody(context)
           ),
           Align(
             child: Padding(
               padding: const EdgeInsets.only(left: 16.0, top: 16.0),
-              child: Text("Pick ä color"),
+              child: Text("Pick ä color",
+              ),
             ),
             alignment: Alignment.centerLeft,
           ),
@@ -81,7 +102,8 @@ class CreateScreenView
           Padding(
             padding: const EdgeInsets.only(left: 16.0, top: 16.0),
             child: Align(
-              child: Text("Tell me your kinks."),
+              child: Text("Tell me your kinks.",
+              ),
               alignment: Alignment.centerLeft,
             ),
           ),

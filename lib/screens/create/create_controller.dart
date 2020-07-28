@@ -35,6 +35,12 @@ class CreateScreenController extends State<CreateScreen> {
     debugPrint("Dickkkkk");
   }
 
+  void deleteImage(){
+    image = null;
+    setState(() {
+    });
+  }
+
   Future getImage() async {
     final picker = ImagePicker();
 
